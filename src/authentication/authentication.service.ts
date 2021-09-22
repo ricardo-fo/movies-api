@@ -37,8 +37,6 @@ export class AuthenticationService {
       throw new ForbiddenException('Email ou senha incorreto(s).');
     }
 
-    // Insere o token de acesso
-
     return user;
   }
 

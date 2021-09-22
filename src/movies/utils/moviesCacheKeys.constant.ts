@@ -1,0 +1,1 @@
+export const GET_MOVIES_CACHE_KEY = 'GET_MOVIES_CACHE_KEY';
