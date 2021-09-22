@@ -2,6 +2,8 @@ import { ConfigService } from '@nestjs/config';
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
+import { User } from '@prisma/client';
+
 import * as bcrypt from 'bcrypt';
 
 import { PrismaService } from './../prisma/prisma.service';
@@ -19,8 +21,12 @@ export class AuthenticationService {
 
   /**
    * Tenta autenticar um usuário.
+   *
+   * @param {AuthenticateUserDto} authenticateUserDto - Dados do usuário.
+   *
+   * @return {Promise<User>}
    */
-  async authenticate(authenticateUserDto: AuthenticateUserDto) {
+  async authenticate(authenticateUserDto: AuthenticateUserDto): Promise<User> {
     const { email, password } = authenticateUserDto;
 
     // Busca pelo usuário
@@ -40,7 +46,10 @@ export class AuthenticationService {
   }
 
   /**
-   * Verifica se a senha é válida.
+   * Verifica se a senha fornecida é válida.
+   *
+   * @param {string} hash     - Hash da senha;
+   * @param {string} password - Senha fornecida.
    */
   private async verifyPassword(hash: string, password: string) {
     const hasMatched = await bcrypt.compare(password, hash);
@@ -49,7 +58,15 @@ export class AuthenticationService {
     }
   }
 
-  getCookieWithJwtToken(userId: string) {
+  /**
+   * Gera uma string contendo o token do usuário e o tempo de expiração
+   * do token, onde essa string deve ser usada com um cookie de login.
+   *
+   * @param {string} userId - ID do usuário.
+   *
+   * @return {string}
+   */
+  getCookieWithJwtToken(userId: string): string {
     const payload: TokenPayload = { userId };
     const token = this.jwtService.sign(payload);
 
@@ -58,7 +75,13 @@ export class AuthenticationService {
     )}`;
   }
 
-  getCookieForLogOut() {
+  /**
+   * Gera uma string sem o token do usuário e sem o tempo de expiração
+   * do token, onde essa string deve ser usada como um cookie de logout.
+   *
+   * @return {string}
+   */
+  getCookieForLogOut(): string {
     return `Authentication=; HttpOnly; Path=/; Max-Age=0`;
   }
 }
