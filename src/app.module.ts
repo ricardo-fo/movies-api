@@ -3,8 +3,8 @@ import { Module } from '@nestjs/common';
 
 import { LoggerModule } from 'nestjs-pino';
 
-import configSetup from '../config/utils/config';
-import loggerSetup from '../config/utils/logger';
+import configSetup from './config/utils/config';
+import loggerSetup from './config/utils/logger';
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { MoviesModule } from './movies/movies.module';

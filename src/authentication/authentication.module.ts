@@ -10,7 +10,7 @@ import { AuthenticationService } from './authentication.service';
 import { JwtAdminStrategy } from './jwt-admin.strategy';
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
-import JwtSetup from '../../config/utils/jwt';
+import JwtSetup from '../config/utils/jwt';
 
 @Module({
   imports: [

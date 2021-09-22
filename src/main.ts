@@ -6,6 +6,7 @@ import * as cookieParser from 'cookie-parser';
 import { Logger } from 'nestjs-pino';
 
 import { AppModule } from './app.module';
+import { runInCluster } from './config/runInCluster';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { bufferLogs: true });
@@ -23,4 +24,5 @@ async function bootstrap() {
   );
   await app.listen(3000);
 }
-bootstrap();
+
+runInCluster(bootstrap);
