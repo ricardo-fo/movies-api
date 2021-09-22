@@ -4,13 +4,14 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 
 import { PrismaModule } from './../prisma/prisma.module';
+import JwtSetup from '../config/utils/jwt';
 
 import { AuthenticationController } from './authentication.controller';
 import { AuthenticationService } from './authentication.service';
-import { JwtAdminStrategy } from './jwt-admin.strategy';
-import { JwtStrategy } from './jwt.strategy';
-import { LocalStrategy } from './local.strategy';
-import JwtSetup from '../config/utils/jwt';
+
+import { JwtAdminStrategy } from './strategies/jwt-admin.strategy';
+import { JwtStrategy } from './strategies/jwt.strategy';
+import { LocalStrategy } from './strategies/local.strategy';
 
 @Module({
   imports: [

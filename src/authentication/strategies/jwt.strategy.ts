@@ -6,9 +6,8 @@ import { Request } from 'express';
 
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
-import { PrismaService } from './../prisma/prisma.service';
-
-import { TokenPayload } from './tokenPayload.interface';
+import { TokenPayload } from '../interfaces/tokenPayload.interface';
+import { PrismaService } from '../../prisma/prisma.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {

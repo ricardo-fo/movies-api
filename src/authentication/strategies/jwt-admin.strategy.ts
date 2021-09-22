@@ -6,11 +6,9 @@ import { Request } from 'express';
 
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
-import { PrismaService } from './../prisma/prisma.service';
-
-import { TokenPayload } from './tokenPayload.interface';
-
-import { UserTypes } from './utils/user-types';
+import { TokenPayload } from '../interfaces/tokenPayload.interface';
+import { UserTypes } from '../utils/user-types';
+import { PrismaService } from '../../prisma/prisma.service';
 
 @Injectable()
 export class JwtAdminStrategy extends PassportStrategy(Strategy, 'jwt-admin') {

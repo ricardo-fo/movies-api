@@ -3,7 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 
 import { Strategy } from 'passport-local';
 
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../authentication.service';
 
 import { User } from '.prisma/client';
 

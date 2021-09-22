@@ -6,9 +6,8 @@ import * as bcrypt from 'bcrypt';
 
 import { PrismaService } from './../prisma/prisma.service';
 
-import { TokenPayload } from './tokenPayload.interface';
-
 import { AuthenticateUserDto } from './dto/authenticate-user.dto';
+import { TokenPayload } from './interfaces/tokenPayload.interface';
 
 @Injectable()
 export class AuthenticationService {
