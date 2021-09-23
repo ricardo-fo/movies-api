@@ -6,6 +6,7 @@ import * as cookieParser from 'cookie-parser';
 import { Logger } from 'nestjs-pino';
 
 import { AppModule } from './app.module';
+
 import { runInCluster } from './config/runInCluster';
 
 async function bootstrap() {

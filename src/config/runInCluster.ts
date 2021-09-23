@@ -1,4 +1,5 @@
 import * as cluster from 'cluster';
+
 import * as os from 'os';
 
 export function runInCluster(bootstrap: () => Promise<void>) {
